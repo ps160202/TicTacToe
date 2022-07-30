@@ -5,6 +5,12 @@ from tkinter import font as tkFont
 turn = 1
 boxes = 0
 
+tk = Tk()  # Creates a root window
+tk.title("Tic Tac Toe")
+myFont = tkFont.Font(family='Helvetica', size=20)
+frm = ttk.Frame(tk, padding=50)
+frm.grid()
+
 
 def checkWinner(box):
     displayText = ""
@@ -34,7 +40,7 @@ def checkWinner(box):
             displayText = "Player %s wins!" % winner
     elif box == 4:
         if ((box1['text'] == player and box7['text'] == player) or
-                (box5['text'] == player and box9['text'] == player)):
+                (box5['text'] == player and box6['text'] == player)):
             displayText = "Player %s wins!" % winner
     elif box == 5:
         if ((box1['text'] == player and box9['text'] == player) or
@@ -63,24 +69,24 @@ def checkWinner(box):
 
     if displayText != "":
         top = Toplevel(tk)
-        top.geometry("750x250")
+        top.geometry("80x80")
         top.title("Child Window")
-        Label(top, text=displayText).place(x=150, y=80)
-        Button(top, text='close', command=reset).place(x=40, y=80)
+        Label(top, text=displayText).place(x=10, y=10)
+        Button(top, text='close', command=lambda: reset(top)).place(x=25, y=40)
         return
 
     if displayText == "" and boxes >= 8:
         top = Toplevel(tk)
         top.geometry("750x250")
         top.title("Child Window")
-        Label(top, text="DRAW!").place(x=150, y=80)
-
+        Label(top, text='DRAW!').place(x=10, y=10)
+        Button(top, text='close', command=lambda: reset(top)).place(x=10, y=40)
     return
 
 
 def buttonClick1():
     global turn, boxes
-    if box1['text'] == 'X' or box1['text'] == '0':
+    if box1['text'] == 'X' or box1['text'] == 'O':
         return
     elif turn == 1:
         box1['text'] = 'X'
@@ -97,7 +103,7 @@ def buttonClick1():
 
 def buttonClick2():
     global turn, boxes
-    if (box2['text'] == 'X' or box2['text'] == '0'):
+    if box2['text'] == 'X' or box2['text'] == 'O':
         return
     elif turn == 1:
         box2['text'] = 'X'
@@ -113,7 +119,7 @@ def buttonClick2():
 
 def buttonClick3():
     global turn, boxes
-    if (box3['text'] == 'X' or box3['text'] == '0'):
+    if box3['text'] == 'X' or box3['text'] == 'O':
         return
     elif turn == 1:
         box3['text'] = 'X'
@@ -130,7 +136,7 @@ def buttonClick3():
 
 def buttonClick4():
     global turn, boxes
-    if (box4['text'] == 'X' or box4['text'] == '0'):
+    if box4['text'] == 'X' or box4['text'] == 'O':
         return
     elif turn == 1:
         box4['text'] = 'X'
@@ -147,7 +153,7 @@ def buttonClick4():
 
 def buttonClick5():
     global turn, boxes
-    if (box5['text'] == 'X' or box5['text'] == '0'):
+    if box5['text'] == 'X' or box5['text'] == 'O':
         return
     elif turn == 1:
         box5['text'] = 'X'
@@ -164,7 +170,7 @@ def buttonClick5():
 
 def buttonClick6():
     global turn, boxes
-    if (box6['text'] == 'X' or box6['text'] == '0'):
+    if box6['text'] == 'X' or box6['text'] == 'O':
         return
     elif turn == 1:
         box6['text'] = 'X'
@@ -181,7 +187,7 @@ def buttonClick6():
 
 def buttonClick7():
     global turn, boxes
-    if (box7['text'] == 'X' or box7['text'] == '0'):
+    if box7['text'] == 'X' or box7['text'] == 'O':
         return
     elif turn == 1:
         box7['text'] = 'X'
@@ -198,7 +204,7 @@ def buttonClick7():
 
 def buttonClick8():
     global turn, boxes
-    if (box8['text'] == 'X' or box8['text'] == '0'):
+    if box8['text'] == 'X' or box8['text'] == 'O':
         return
     elif turn == 1:
         box8['text'] = 'X'
@@ -215,7 +221,7 @@ def buttonClick8():
 
 def buttonClick9():
     global turn, boxes
-    if (box9['text'] == 'X' or box9['text'] == '0'):
+    if box9['text'] == 'X' or box9['text'] == 'O':
         return
     elif turn == 1:
         box9['text'] = 'X'
@@ -230,7 +236,7 @@ def buttonClick9():
     return
 
 
-def reset():
+def reset(top):
     global turn, boxes
     turn = 1
     boxes = 0
@@ -245,14 +251,11 @@ def reset():
     box8['text'] = ""
     box9['text'] = ""
 
-    #top.destroy()
+    top.destroy()
     return
 
-tk = Tk()  # Creates a root window
-tk.title("Tic Tac Toe")
-myFont = tkFont.Font(family='Helvetica', size=20)
-frm = ttk.Frame(tk, padding=50)
-frm.grid()
+
+
 
 frame1 = ttk.Frame(tk, width=100, height=100)
 frame1.grid(row=0, column=0)
