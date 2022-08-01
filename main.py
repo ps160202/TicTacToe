@@ -209,11 +209,11 @@ def buttonClick8():
     elif turn == 1:
         box8['text'] = 'X'
         turn = 2
-        boxes
+        boxes += 1
     elif turn == 2:
         box8['text'] = 'O'
         turn = 1
-        boxes
+        boxes += 1
 
     checkWinner(8)
     return
