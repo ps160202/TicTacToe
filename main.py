@@ -31,7 +31,7 @@ def checkWinner(box):
             displayText = "Player %s wins!" % winner
     elif box == 2:
         if ((box5['text'] == player and box8['text'] == player) or
-                (box1['text'] == 'O' and box3['text'] == player)):
+                (box1['text'] == player and box3['text'] == player)):
             displayText = "Player %s wins!" % winner
     elif box == 3:
         if ((box1['text'] == player and box2['text'] == player) or
@@ -253,8 +253,6 @@ def reset(top):
 
     top.destroy()
     return
-
-
 
 
 frame1 = ttk.Frame(tk, width=100, height=100)
